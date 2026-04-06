@@ -1,4 +1,4 @@
 package com.example.umc10th.domain.mission.entity.mapping;
 
-public class MissionTerm {
+public class MemberMission {
 }

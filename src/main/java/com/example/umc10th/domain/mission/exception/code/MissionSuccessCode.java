@@ -1,4 +1,4 @@
-package com.example.umc10th.domain.member.exception.code;
+package com.example.umc10th.domain.mission.exception.code;
 
-public enum MemberSuccessCode {
+public enum MissionSuccessCode {
 }

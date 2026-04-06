@@ -1,4 +1,4 @@
 package com.example.umc10th.domain.review.entity;
 
-public class Member {
+public class Review {
 }

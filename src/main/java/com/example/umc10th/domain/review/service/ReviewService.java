@@ -1,4 +1,4 @@
-package com.example.umc10th.domain.member.service;
+package com.example.umc10th.domain.review.service;
 
-public class MemberService {
+public class ReviewService {
 }

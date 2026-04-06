@@ -1,7 +1,7 @@
-package com.example.umc10th.domain.member.exception;
+package com.example.umc10th.domain.review.exception;
 
-public class MemberException extends RuntimeException {
-    public MemberException(String message) {
+public class ReviewException extends RuntimeException {
+    public ReviewException(String message) {
         super(message);
     }
 }

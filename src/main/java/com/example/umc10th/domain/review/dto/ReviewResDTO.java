@@ -1,4 +1,4 @@
-package com.example.umc10th.domain.member.dto;
+package com.example.umc10th.domain.review.dto;
 
-public class MemberResDTO {
+public class ReviewResDTO {
 }

@@ -1,4 +1,4 @@
-package com.example.umc10th.domain.member.repository;
+package com.example.umc10th.domain.review.repository;
 
-public interface MemberRepository {
+public interface ReviewRepository {
 }
