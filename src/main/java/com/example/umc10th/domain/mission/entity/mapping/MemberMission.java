@@ -2,9 +2,14 @@ package com.example.umc10th.domain.mission.entity.mapping;
 
 import com.example.umc10th.domain.member.entity.Food;
 import com.example.umc10th.domain.member.entity.Member;
+import com.example.umc10th.domain.mission.entity.Location;
+import com.example.umc10th.domain.mission.entity.Mission;
+import com.example.umc10th.domain.mission.entity.Store;
 import com.example.umc10th.domain.mission.enums.MissionCompleteStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,16 +41,17 @@ public class MemberMission {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "missionId", nullable = false)
-    private Member mission;
+    private Mission mission;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "storeId", nullable = false)
-    private Member store;
+    private Store store;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "locationId", nullable = false)
-    private Food location;
+    private Location location;
 
     @Column(name = "isCompleted")
+    @Enumerated(EnumType.STRING)
     private MissionCompleteStatus isCompleted;
 }

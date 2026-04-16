@@ -1,7 +1,12 @@
 package com.example.umc10th.domain.member.entity;
 
+import com.example.umc10th.domain.member.entity.mapping.MemberFood;
+import com.example.umc10th.domain.member.entity.mapping.MemberTerm;
 import com.example.umc10th.domain.member.enums.Gender;
 import com.example.umc10th.domain.member.enums.SocialType;
+import com.example.umc10th.domain.mission.entity.mapping.MemberMission;
+import com.example.umc10th.global.entity.BaseEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,8 +14,11 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,7 +30,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "member")
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +44,8 @@ public class Member {
 
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)
-    private Gender gender;
+    @Builder.Default
+    private Gender gender = Gender.NONE;
 
     @Column(name = "email")
     private String email;
@@ -66,13 +75,12 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private SocialType socialType;
 
-    @Column(name = "createdAt")
-    private LocalDate createdAt;
+    @OneToMany(mappedBy = "member")
+    private List<MemberFood> memberFoodList = new ArrayList<>();
 
-    @Column(name = "updatedAt")
-    private LocalDate updatedAt;
+    @OneToMany(mappedBy = "member")
+    private List<MemberTerm> memberTermList = new ArrayList<>();
 
-    @Column(name = "deletedAt")
-    private LocalDate deletedAt;
-
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MemberMission> memberMissionList = new ArrayList<>();
 }

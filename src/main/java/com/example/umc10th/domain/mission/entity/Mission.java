@@ -1,5 +1,8 @@
 package com.example.umc10th.domain.mission.entity;
 
+import com.example.umc10th.domain.mission.entity.mapping.MemberMission;
+import com.example.umc10th.global.entity.BaseEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -8,8 +11,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,7 +27,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "mission")
-public class Mission {
+public class Mission extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,18 +46,12 @@ public class Mission {
     @Column(name = "reward")
     private String reward;
 
-    @Column(name = "vertificationCode")
-    private String vertificationCode;
+    @Column(name = "verificationCode")
+    private String verificationCode;
 
     @Column(name = "missionContent")
     private String missionContent;
 
-    @Column(name = "created_at")
-    private LocalDate created_at;
-
-    @Column(name = "updated_at")
-    private LocalDate updated_at;
-
-    @Column(name = "deleted_at")
-    private LocalDate deleted_at;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MemberMission> memberMissionList = new ArrayList<>();
 }
