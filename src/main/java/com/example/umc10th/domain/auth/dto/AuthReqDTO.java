@@ -11,7 +11,7 @@ public class AuthReqDTO {
             String password,
             String name,
             Gender gender,
-            LocalDate birthDate,
+            LocalDate birth,
             String address,
             List<Long> preferredFoodCategoryIds,
             List<Long> agreedTermIds
