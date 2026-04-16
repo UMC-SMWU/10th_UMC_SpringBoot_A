@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9c6e2777-6e6e-4f82-a641-7cd4629774aa" name="변경" comment="feat: service 계층 구조 생성" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="umc10th" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="Interface" />
+        <option value="Exception" />
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Kim-DongH"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/UMC-SMWU/10th_UMC_SpringBoot_A.git",
+    "accountId": "30ea11bb-5594-42c3-8cc8-8c224424e855"
+  }
+}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="3BsqtG3tHv6qJ84pQh67hwqX7cv" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.umc10th 빌드.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.Umc10thApplication.executor": "Run",
+    "git-widget-placeholder": "week06-Kim-DongH",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Umc10thApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="DB_USER" value="kate3988" />
+        <env name="DB_PW" value="ehdgml748031*" />
+        <env name="DB_URL" value="jdbc:mysql://localhost:3306/umc10th" />
+      </envs>
+      <module name="umc10th.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.umc10th.Umc10thApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.138" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.138" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="9c6e2777-6e6e-4f82-a641-7cd4629774aa" name="변경" comment="" />
+      <created>1775288344956</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775288344956</updated>
+      <workItem from="1775288346318" duration="7037000" />
+      <workItem from="1775550418441" duration="1919000" />
+      <workItem from="1775990757031" duration="32299000" />
+    </task>
+    <task id="LOCAL-00001" summary="git commit -m &quot;[Feat(케이디)] 1주차 미션 정리 - 계층기반 폴더 생성&quot;">
+      <option name="closed" value="true" />
+      <created>1775293539898</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1775293539898</updated>
+    </task>
+    <task id="LOCAL-00002" summary="git commit -m &quot;[Feat(케이디)] 1주차 미션 정리 - 계층기반 폴더 생성&quot;">
+      <option name="closed" value="true" />
+      <created>1775293986766</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1775293986766</updated>
+    </task>
+    <task id="LOCAL-00003" summary="git commit -m &quot;[Feat(케이디)] 1주차 미션 정리 - 계층기반 폴더 생성&quot;">
+      <option name="closed" value="true" />
+      <created>1775294184219</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1775294184219</updated>
+    </task>
+    <task id="LOCAL-00004" summary="git commit -m &quot;[Feat(케이디)] 1주차 미션 정리 - 계층기반 폴더 생성&quot;">
+      <option name="closed" value="true" />
+      <created>1776266293317</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1776266293317</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: entity 및 enum 설계">
+      <option name="closed" value="true" />
+      <created>1776266499895</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1776266499895</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: db접속 방식 변경">
+      <option name="closed" value="true" />
+      <created>1776266558629</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1776266558629</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: member, mission, review controller 및 dto 구현">
+      <option name="closed" value="true" />
+      <created>1776266620452</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1776266620452</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: auth(회원가입) controller 및 dto 구현">
+      <option name="closed" value="true" />
+      <created>1776266653897</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1776266653897</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: service 계층 구조 생성">
+      <option name="closed" value="true" />
+      <created>1776266670239</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1776266670239</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="git commit -m &quot;[Feat(케이디)] 1주차 미션 정리 - 계층기반 폴더 생성&quot;" />
+    <MESSAGE value="feat: entity 및 enum 설계" />
+    <MESSAGE value="feat: db접속 방식 변경" />
+    <MESSAGE value="feat: member, mission, review controller 및 dto 구현" />
+    <MESSAGE value="feat: auth(회원가입) controller 및 dto 구현" />
+    <MESSAGE value="feat: service 계층 구조 생성" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: service 계층 구조 생성" />
+  </component>
+</project>
