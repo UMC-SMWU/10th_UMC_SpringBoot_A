@@ -39,6 +39,9 @@ public class Store {
     @Column(name = "storeName")
     private String storeName;
 
+    @Column(name = "store_description")
+    private String storeDescription;
+
     @Column(name = "managerNumber")
     private Long managerNumber;
 

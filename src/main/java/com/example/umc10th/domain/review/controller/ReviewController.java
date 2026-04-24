@@ -2,6 +2,7 @@ package com.example.umc10th.domain.review.controller;
 
 import com.example.umc10th.domain.review.dto.ReviewReqDTO;
 import com.example.umc10th.domain.review.dto.ReviewResDTO;
+import com.example.umc10th.domain.review.exception.code.ReviewSuccessCode;
 import com.example.umc10th.domain.review.service.ReviewService;
 import com.example.umc10th.global.apiPayload.ApiResponse;
 import com.example.umc10th.global.apiPayload.code.BaseSuccessCode;
@@ -24,12 +25,9 @@ public class ReviewController {
     //리뷰 작성
     @PostMapping("/{storeId}/reviews")
     public ApiResponse<ReviewResDTO.CreateReviewResult> createReview(
-            @PathVariable Long storeId,
-            @RequestHeader("Authorization") String authorization,
             @RequestBody ReviewReqDTO.CreateReview dto
     ) {
-        BaseSuccessCode code = GeneralSuccessCode.OK;
-        return ApiResponse.onSuccess(code, reviewService.createReview(storeId, dto));
+        return ApiResponse.onSuccess(ReviewSuccessCode.REVIEW_CREATE_SUCCESS, reviewService.createReview(dto));
     }
 
 }
