@@ -54,4 +54,8 @@ public class MemberMission {
     @Column(name = "isCompleted")
     @Enumerated(EnumType.STRING)
     private MissionCompleteStatus isCompleted;
+
+    public void complete() {
+        this.isCompleted = MissionCompleteStatus.COMPLETED;
+    }
 }
