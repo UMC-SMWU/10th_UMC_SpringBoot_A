@@ -6,15 +6,12 @@ import java.util.List;
 public class MissionResDTO {
 
     public record MyMissionList(
-            List<MyMission> missions,
-            Integer page,
-            Integer size,
-            Integer totalPages,
-            Long totalElements
+            List<MyMission> missions
     ) {}
 
     public record MyMission(
-            Long userMissionId,
+            Long memberMissionId,
+            Long missionId,
             String storeName,
             String missionContent,
             Integer reward,
@@ -22,7 +19,7 @@ public class MissionResDTO {
             String storeVerificationCode
     ) {}
 
-    public record CompleteMissionResult(
+    public record MissionCompleteResult(
             Long userMissionId,
             MissionCompleteStatus status
     ) {}

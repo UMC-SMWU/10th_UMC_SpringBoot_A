@@ -4,6 +4,7 @@ import com.example.umc10th.domain.mission.dto.MissionReqDTO;
 import com.example.umc10th.domain.mission.dto.MissionResDTO;
 import com.example.umc10th.domain.mission.dto.MissionResDTO.MyMissionList;
 import com.example.umc10th.domain.mission.enums.MissionCompleteStatus;
+import com.example.umc10th.domain.mission.exception.code.MissionSuccessCode;
 import com.example.umc10th.domain.mission.service.MissionService;
 import com.example.umc10th.global.apiPayload.ApiResponse;
 import com.example.umc10th.global.apiPayload.code.BaseSuccessCode;
@@ -26,26 +27,21 @@ public class MissionController {
     private final MissionService missionService;
 
     //내 미션 조회
-    @GetMapping("/my")
+    @GetMapping("/my/{memberId}")
     public ApiResponse<MyMissionList> getMyMissions(
-            @RequestHeader("Authorization") String authorization,
-            @RequestParam MissionCompleteStatus status,
-            @RequestParam Integer page,
-            @RequestParam Integer size
+            @PathVariable Long memberId
     ) {
-        BaseSuccessCode code = GeneralSuccessCode.OK;
-        return ApiResponse.onSuccess(code, missionService.getMyMissions(status, page, size));
+        return ApiResponse.onSuccess(MissionSuccessCode.MY_MISSION_LIST_SUCCESS,
+                missionService.getMyMissions(memberId));
     }
 
     //미션 성공 요청
-    @PostMapping("/user-missions/{userMissionId}/complete")
-    public ApiResponse<MissionResDTO.CompleteMissionResult> completeMission(
-            @PathVariable Long userMissionId,
-            @RequestHeader("Authorization") String authorization,
-            @RequestBody MissionReqDTO.CompleteMission dto
+    @PostMapping("/user-missions/{memberMissionId}/complete")
+    public ApiResponse<MissionResDTO.MissionCompleteResult> completeMission(
+            @PathVariable Long memberMissionId
     ) {
-        BaseSuccessCode code = GeneralSuccessCode.OK;
-        return ApiResponse.onSuccess(code, missionService.completeMission(userMissionId, dto));
+        return ApiResponse.onSuccess(MissionSuccessCode.MISSION_COMPLETE_SUCCESS,
+                missionService.completeMission(memberMissionId));
     }
 
 }

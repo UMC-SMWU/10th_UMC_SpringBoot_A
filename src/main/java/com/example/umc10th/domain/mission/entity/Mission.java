@@ -43,7 +43,7 @@ public class Mission extends BaseEntity{
 
 
     @Column(name = "reward")
-    private String reward;
+    private Integer reward;
 
     @Column(name = "verificationCode")
     private String verificationCode;
