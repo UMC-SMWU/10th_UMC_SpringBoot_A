@@ -50,6 +50,9 @@ public class Member extends BaseEntity {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "address")
     private String address;
 
@@ -83,4 +86,16 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MemberMission> memberMissionList = new ArrayList<>();
+
+    public void updateOnboardingInfo(
+            String name,
+            Gender gender,
+            LocalDate birth,
+            String address
+    ) {
+        this.name = name;
+        this.gender = gender;
+        this.birth = birth;
+        this.address = address;
+    }
 }
