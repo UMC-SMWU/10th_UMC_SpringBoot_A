@@ -7,6 +7,10 @@ build/
 !**/src/test/**/build/
 
 
+# Gradle
+.gradle/
+build/
+
 
 ### 민감 정보 ###
 .env
