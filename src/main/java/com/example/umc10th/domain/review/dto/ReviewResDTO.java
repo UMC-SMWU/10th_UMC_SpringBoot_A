@@ -1,4 +1,15 @@
 package com.example.umc10th.domain.review.dto;
 
+import lombok.Builder;
+
 public class ReviewResDTO {
+
+    @Builder
+    public record CreateReview(
+            Long reviewId,
+            String title,
+            int star,
+            String content
+    ) {}
+
 }
