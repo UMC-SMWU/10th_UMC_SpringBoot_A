@@ -4,9 +4,10 @@ import java.util.List;
 
 public class ReviewReqDTO {
 
-    public static class CreateDTO {
-        private Double rate;
-        private String content;
-        private List<String> imageUrls;
+    public record CreateReview(
+            String rate,
+            String content,
+            List<String> imageUrls
+    ) {
     }
 }

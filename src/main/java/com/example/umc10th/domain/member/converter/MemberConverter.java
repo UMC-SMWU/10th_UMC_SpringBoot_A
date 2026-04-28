@@ -10,18 +10,18 @@ import java.time.LocalDate;
 public class MemberConverter {
 
     // SignUpDTO → Member 엔티티
-    public static Member toMember(MemberReqDTO.SignUpDTO request) {
+    public static Member toMember(MemberReqDTO.SignUp request) {
         return Member.builder()
-                .name(request.getName())
-                .gender(Gender.valueOf(request.getGender()))  // String → Enum 변환
-                .birthDate(LocalDate.parse(request.getBirthDate()))  // String → LocalDate 변환
-                .address(request.getAddress())
+                .name(request.name())
+                .gender(Gender.valueOf(request.gender()))  // String → Enum 변환
+                .birthDate(LocalDate.parse(request.birthday_Date()))  // String → LocalDate 변환
+                .address(request.address())
                 .build();
     }
 
-    // Member → SignUpResultDTO
-    public static MemberResDTO.SignUpResultDTO toSignUpResultDTO(Member member) {
-        return MemberResDTO.SignUpResultDTO.builder()
+    // Member → SignUpResult
+    public static MemberResDTO.SignUp toSignUp(Member member) {
+        return MemberResDTO.SignUp.builder()
                 .memberId(member.getId())
                 .name(member.getName())
                 .build();

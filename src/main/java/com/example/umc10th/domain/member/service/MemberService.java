@@ -12,17 +12,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
 
-    public MemberResDTO.SignUpResultDTO signUp(MemberReqDTO.SignUpDTO request) {
-        return MemberResDTO.SignUpResultDTO.builder()
+    public MemberResDTO.SignUp signUp(MemberReqDTO.SignUp request) {
+        //service -> controller
+        return MemberResDTO.SignUp.builder()
                 .memberId(1L)
                 .name("양세영")
                 .email("im3zero@email.com")
-                .reviews(List.of("1"))
                 .build();
     }
 
-    public MemberResDTO.HomeDTO getHome() {
-        return MemberResDTO.HomeDTO.builder()
+    public MemberResDTO.HomeInfo getInfo() {
+        return MemberResDTO.HomeInfo.builder()
                 .memberId(1L)
                 .name("세영")
                 .email("im3zero@email.com")
@@ -30,10 +30,9 @@ public class MemberService {
                 .build();
     }
 
-    public MemberResDTO.LoginResultDTO login(MemberReqDTO.LoginDTO request) {
-        return MemberResDTO.LoginResultDTO.builder()
-                .email(request.getEmail())
-                .token("임시 토큰")
+    public MemberResDTO.Login login(MemberReqDTO.Login request) {
+        return MemberResDTO.Login.builder()
+                .email("im3zero@email.com")
                 .build();
     }
 }

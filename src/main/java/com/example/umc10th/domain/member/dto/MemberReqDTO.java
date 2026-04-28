@@ -1,41 +1,16 @@
 package com.example.umc10th.domain.member.dto;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
+//클라이언트 -> 서버로 보내는 데이터
 public class MemberReqDTO {
-
-    // 회원가입
-    @Getter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class SignUpDTO {
-        @Schema(example = "세영")
-        private String name;
-
-        @Schema(example = "FEMALE")
-        private String gender;
-
-        @Schema(example = "2001-08-15")
-        private String birthDate;
-
-        @Schema(example = "서울시 강서구")
-        private String address;
+    public record GetInfo(Long memberId, String password){
     }
 
-    // 로그인
-    @Getter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class LoginDTO {
-        @Schema(example = "im3zero@email.com")
-        private String email;
-        @Schema(example = "password")
-        private String password;
+    public record HomeInfo(Long memberId, String password, Integer point) {
+    }
+
+    public record SignUp(String name, String gender, String email, String phoneNumber, String birthday_Date, String address) {
+    }
+
+    public record Login(String email, String password) {
     }
 }

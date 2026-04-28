@@ -9,13 +9,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MissionService {
 
-    public MissionResDTO.MissionListDTO getMissions(Long userId, String status) {
-        //실제 로직 구현
+    public MissionResDTO.MissionList getMissions(Long memberId, String status) {
         return null;
     }
 
-    public String complete(Long missionId, MissionReqDTO.CompleteDTO request) {
-        //실제 로직 구현
+    public String complete(Long missionId, MissionReqDTO.missionComplete request) {
         return null;
     }
 }

@@ -7,7 +7,7 @@ build/
 
 # Gradle
 .gradle/
-
+:
 
 ### 민감 정보 ###
 .env

@@ -3,7 +3,7 @@ package com.example.umc10th.domain.review.controller;
 import com.example.umc10th.domain.review.dto.ReviewReqDTO;
 import com.example.umc10th.domain.review.dto.ReviewResDTO;
 import com.example.umc10th.domain.review.service.ReviewService;
-import com.example.umc10th.global.ApiResponse;
+import com.example.umc10th.global.apiPayload.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +17,10 @@ public class ReviewController {
 
     // 리뷰 작성
     @PostMapping("/missions/{missionId}/review")
-    public ResponseEntity<ApiResponse<ReviewResDTO.CreateResultDTO>> writeReview(
+    public ApiResponse<ReviewResDTO.ReviewResult> writeReview(
             @PathVariable Long missionId,
-            @RequestBody ReviewReqDTO.CreateDTO request) {
-        ReviewResDTO.CreateResultDTO result = ReviewResDTO.CreateResultDTO.builder()
-                .reviewId(1L)
-                .build();
-        return ResponseEntity.ok(ApiResponse.onSuccess(result));
+            @RequestBody ReviewReqDTO.CreateReview request) {
+        ReviewResDTO.ReviewResult result = reviewService.writeReview(missionId, request);
+        return ApiResponse.onSuccess(result);
     }
 }
