@@ -31,7 +31,7 @@ public class UserController {
     }
 
     // 내 정보 수정
-    @PatchMapping("/me")
+    @PatchMapping("/me/info")
     public ApiResponse<UserResDTO.GetInfo> updateMyPage(
             @RequestBody UserReqDTO.UpdateInfo request
     ) {

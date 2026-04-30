@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus;
 @RequiredArgsConstructor
 public enum UserSuccessCode implements BaseSuccessCode {
 
-    USER_INFO_SUCCESS(HttpStatus.OK, "USER2001", "유저 정보 조회 성공"),
-    USER_UPDATE_SUCCESS(HttpStatus.OK, "USER2002", "유저 정보 수정 성공");
+    USER_INFO_SUCCESS(HttpStatus.OK, "USER200_1", "유저 정보 조회 성공"),
+    USER_UPDATE_SUCCESS(HttpStatus.OK, "USER200_2", "유저 정보 수정 성공");
 
     private final HttpStatus status;
     private final String code;
