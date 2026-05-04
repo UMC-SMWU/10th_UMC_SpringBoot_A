@@ -4,11 +4,15 @@ public class AuthResDTO {
 
     public record SignUpResult (
             Long memberId,
+<<<<<<< HEAD
             String email
     ){}
 
     public record OnboardingResult(
             Long memberId,
+=======
+            String email,
+>>>>>>> upstream/Kim-DongH
             String name
     ){}
 }

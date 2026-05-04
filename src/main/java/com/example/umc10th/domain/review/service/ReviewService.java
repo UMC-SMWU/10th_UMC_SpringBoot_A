@@ -1,5 +1,6 @@
 package com.example.umc10th.domain.review.service;
 
+<<<<<<< HEAD
 import com.example.umc10th.domain.mission.entity.mapping.MemberMission;
 import com.example.umc10th.domain.mission.enums.MissionCompleteStatus;
 import com.example.umc10th.domain.mission.repository.MemberMissionRepository;
@@ -12,11 +13,16 @@ import com.example.umc10th.domain.review.exception.code.ReviewErrorCode;
 import com.example.umc10th.domain.review.repository.ReviewPhotoRepository;
 import com.example.umc10th.domain.review.repository.ReviewRepository;
 import jakarta.transaction.Transactional;
+=======
+import com.example.umc10th.domain.review.dto.ReviewReqDTO;
+import com.example.umc10th.domain.review.dto.ReviewResDTO;
+>>>>>>> upstream/Kim-DongH
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+<<<<<<< HEAD
 @Transactional
 public class ReviewService {
 
@@ -67,5 +73,11 @@ public class ReviewService {
                 savedReview.getStar(),
                 savedReview.getReviewContent()
         );
+=======
+public class ReviewService {
+
+    public ReviewResDTO.CreateReviewResult createReview(Long storeId, ReviewReqDTO.CreateReview dto) {
+        return null;
+>>>>>>> upstream/Kim-DongH
     }
 }
