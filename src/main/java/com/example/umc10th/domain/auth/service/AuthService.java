@@ -2,11 +2,8 @@ package com.example.umc10th.domain.auth.service;
 
 import com.example.umc10th.domain.auth.dto.AuthReqDTO;
 import com.example.umc10th.domain.auth.dto.AuthResDTO;
-<<<<<<< HEAD
 import com.example.umc10th.domain.member.entity.Member;
 import com.example.umc10th.domain.member.repository.MemberRepository;
-=======
->>>>>>> upstream/Kim-DongH
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +11,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthService {
 
-<<<<<<< HEAD
     private final MemberRepository memberRepository;
 
     public AuthResDTO.SignUpResult signUp(AuthReqDTO.SignUp dto)
@@ -34,9 +30,5 @@ public class AuthService {
                 savedMember.getId(),
                 savedMember.getEmail()
         );
-=======
-    public AuthResDTO.SignUpResult signUp(AuthReqDTO.SignUp dto) {
-        return null;
->>>>>>> upstream/Kim-DongH
     }
 }

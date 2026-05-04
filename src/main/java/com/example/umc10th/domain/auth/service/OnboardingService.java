@@ -68,7 +68,8 @@ public class OnboardingService{
 
         return new AuthResDTO.OnboardingResult(
                 member.getId(),
-                member.getName()
+                member.getName(),
+                member.getEmail()
         );
     }
 }
