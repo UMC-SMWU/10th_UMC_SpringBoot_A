@@ -12,9 +12,9 @@ public class MissionResDTO {
             Long missionId,
             String storeName,
             String conditional,
-            Integer reward,
+            Integer point,
             LocalDate deadline,
-            String status
+            Boolean isComplete
     ){}
 
     @Builder
