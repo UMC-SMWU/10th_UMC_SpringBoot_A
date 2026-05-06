@@ -2,6 +2,7 @@ package com.example.umc10th.domain.member.entity.mapping;
 
 import com.example.umc10th.domain.member.entity.Food;
 import com.example.umc10th.domain.member.entity.Member;
+import com.example.umc10th.domain.member.entity.Term;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -35,6 +36,6 @@ public class MemberTerm {
 
     @JoinColumn(name = "termId")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Food term;
+    private Term term;
 
 }

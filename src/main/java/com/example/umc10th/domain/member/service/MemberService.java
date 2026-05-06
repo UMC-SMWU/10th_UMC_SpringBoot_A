@@ -32,7 +32,7 @@ public class MemberService {
                 .orElseThrow(() -> new MemberException(MemberErrorCode.MEMBER_NOT_FOUND));
 
         Integer completedMissionCount =
-                memberMissionRepository.countByMemberAndIsCompleted(
+                memberMissionRepository.countByMember_IdAndIsCompleted(
                         member,
                         MissionCompleteStatus.COMPLETED
                 );
