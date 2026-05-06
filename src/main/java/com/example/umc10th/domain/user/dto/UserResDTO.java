@@ -7,7 +7,6 @@ public class UserResDTO {
     @Builder
     public record GetInfo(
             String name,
-            String nickname,
             String profileUrl,
             String email,
             String phoneNumber,
