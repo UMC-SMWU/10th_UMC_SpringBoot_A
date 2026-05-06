@@ -5,6 +5,7 @@ import com.example.umc10th.domain.review.dto.ReviewResDTO;
 import com.example.umc10th.domain.review.exception.code.ReviewSuccessCode;
 import com.example.umc10th.domain.review.service.ReviewService;
 import com.example.umc10th.global.apiPayload.ApiResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,4 +27,14 @@ public class ReviewController {
         return ApiResponse.onSuccess(ReviewSuccessCode.REVIEW_CREATE_SUCCESS, reviewService.createReview(dto));
     }
 
+    //리뷰 조회
+    @PostMapping("/reviews/my")
+    public ApiResponse<ReviewResDTO.MyReviewList> getMyReviews(
+            @RequestBody @Valid ReviewReqDTO.ViewMyReview request
+    ) {
+        return ApiResponse.onSuccess(
+                ReviewSuccessCode.MY_REVIEW_LIST_SUCCESS,
+                reviewService.getMyReviews(request)
+        );
+    }
 }
