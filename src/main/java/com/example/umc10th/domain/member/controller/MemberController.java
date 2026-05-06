@@ -45,5 +45,11 @@ public class MemberController {
         return ApiResponse.onSuccess(code, result);
     }
 
+    @GetMapping("/api/users/{memberId}/my")
+    public ApiResponse<MemberResDTO.MyPageDTO> getMyPage(
+            @PathVariable Long memberId) {
+        return ApiResponse.onSuccess(memberService.getMyPage(memberId));
+    }
+
 
 }

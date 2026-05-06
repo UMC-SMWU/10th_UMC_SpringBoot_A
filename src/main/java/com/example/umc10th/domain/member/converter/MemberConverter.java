@@ -26,4 +26,12 @@ public class MemberConverter {
                 .name(member.getName())
                 .build();
     }
+
+    public static MemberResDTO.MyPageDTO toMyPageDTO(Member member) {
+        return MemberResDTO.MyPageDTO.builder()
+                .nickname(member.getName())
+                .email(member.getEmail())
+                .point(member.getPoint())
+                .build();
+    }
 }

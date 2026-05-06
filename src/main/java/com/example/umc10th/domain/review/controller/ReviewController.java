@@ -23,4 +23,12 @@ public class ReviewController {
         ReviewResDTO.ReviewResult result = reviewService.writeReview(missionId, request);
         return ApiResponse.onSuccess(result);
     }
+
+    //리뷰 목록 조회
+    @GetMapping("/stores/{storeId}/reviews")
+    public ApiResponse<ReviewResDTO.ReviewPreViewListDTO> getReviews(
+            @PathVariable Long storeId,
+            @RequestParam(defaultValue = "0") Integer page) {
+        return ApiResponse.onSuccess(reviewService.getReviews(storeId, page));
+    }
 }

@@ -2,7 +2,9 @@ package com.example.umc10th.domain.member.service;
 
 import com.example.umc10th.domain.member.dto.MemberReqDTO;
 import com.example.umc10th.domain.member.dto.MemberResDTO;
-import io.swagger.v3.oas.annotations.media.Schema;
+import com.example.umc10th.domain.member.entity.Member;
+import com.example.umc10th.domain.member.repository.MemberRepository;
+import com.example.umc10th.domain.member.converter.MemberConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class MemberService {
+    private final MemberRepository memberRepository;
+
 
     public MemberResDTO.SignUp signUp(MemberReqDTO.SignUp request) {
         //service -> controller
@@ -34,5 +38,11 @@ public class MemberService {
         return MemberResDTO.Login.builder()
                 .email("im3zero@email.com")
                 .build();
+    }
+
+    public MemberResDTO.MyPageDTO getMyPage(Long memberId) {
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new RuntimeException("회원이 없습니다."));
+        return MemberConverter.toMyPageDTO(member);
     }
 }

@@ -21,12 +21,10 @@ public class MemberResDTO {
     //로그인
     @Builder
     public record Login(
-            //String name,
-            //String gender,
+
             Long memberId,
             String email,
             String password
-            //Integer point
     ) {
     }
 
@@ -41,5 +39,13 @@ public class MemberResDTO {
             List<String> reviews
     ) {
     }
+
+    @Builder
+    public record MyPageDTO(
+            String nickname,
+            String email,
+            Integer point
+    ) {}
+
 }
 
