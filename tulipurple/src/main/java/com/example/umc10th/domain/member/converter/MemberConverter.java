@@ -4,7 +4,11 @@ import com.example.umc10th.domain.member.dto.MemberReqDTO;
 import com.example.umc10th.domain.member.dto.MemberResDTO;
 import com.example.umc10th.domain.member.entity.Member;
 import com.example.umc10th.domain.mission.entity.mapping.MemberMission;
+import com.example.umc10th.domain.mission.enums.Address;
+import org.springframework.data.domain.Page;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public class MemberConverter {
@@ -12,29 +16,28 @@ public class MemberConverter {
     // 마이페이지
     public static MemberResDTO.GetInfo toGetInfo(Member member) {
         return MemberResDTO.GetInfo.builder()
-                .email(member.getEmail())
                 .name(member.getName())
-                .gender(member.getGender())
-                .birth(member.getBirth())
-                .point(member.getPoint())
-                .phoneNumber(member.getPhoneNumber())
                 .profileUrl(member.getProfileUrl())
+                .email(member.getEmail())
+                .phoneNumber(member.getPhoneNumber())
+                .point(member.getPoint())
                 .build();
     }
 
     // 홈화면 조회
     public static MemberResDTO.HomeInfo toHomeInfo(
             Member member,
-            List<MemberMission> ongoingMissions,
+            Address location,
+            Page<MemberMission> missionPage,
             int successCount,
             int totalCount
     ) {
-        List<MemberResDTO.HomeMissionInfo> missionList = ongoingMissions.stream()
+        List<MemberResDTO.HomeMissionInfo> missionList = missionPage.stream()
                 .map(MemberConverter::toHomeMissionInfo)
                 .toList();
 
         return MemberResDTO.HomeInfo.builder()
-                .name(member.getName())
+                .location(location.name())
                 .point(member.getPoint())
                 .missionSuccessCount(successCount)
                 .missionTotalCount(totalCount)
@@ -43,12 +46,14 @@ public class MemberConverter {
     }
 
     private static MemberResDTO.HomeMissionInfo toHomeMissionInfo(MemberMission mm) {
+        long dDay = ChronoUnit.DAYS.between(LocalDate.now(), mm.getMission().getDeadline());
         return MemberResDTO.HomeMissionInfo.builder()
                 .missionId(mm.getMission().getId())
                 .storeName(mm.getMission().getStore().getName())
                 .conditional(mm.getMission().getConditional())
                 .point(mm.getMission().getPoint())
                 .deadline(mm.getMission().getDeadline())
+                .dDay(dDay)
                 .build();
     }
 
@@ -56,8 +61,12 @@ public class MemberConverter {
     public static Member toEntity(MemberReqDTO.SignUp dto) {
         return Member.builder()
                 .name(dto.name())
-                .email(dto.userId())
+                .email(dto.email())
                 .password(dto.password())
+                .gender(dto.gender())
+                .birth(dto.birth())
+                .address(dto.address())
+                .detailAddress(dto.detailAddress())
                 .build();
     }
 

@@ -5,10 +5,12 @@ import com.example.umc10th.domain.member.dto.MemberResDTO;
 import com.example.umc10th.domain.member.exception.code.MemberSuccessCode;
 import com.example.umc10th.domain.member.service.MemberService;
 import com.example.umc10th.global.apiPayload.ApiResponse;
+import com.example.umc10th.domain.mission.enums.Address;
 import com.example.umc10th.global.apiPayload.code.BaseSuccessCode;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,10 +32,13 @@ public class MemberController {
     // 홈화면 조회
     @GetMapping("/users/{userId}/home")
     public ApiResponse<MemberResDTO.HomeInfo> getHome(
-            @PathVariable Long userId
+            @PathVariable Long userId,
+            @RequestParam(required = false) Address location,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
     ) {
         BaseSuccessCode code = MemberSuccessCode.HOME_OK;
-        return ApiResponse.onSuccess(code, memberService.getHome(userId));
+        return ApiResponse.onSuccess(code, memberService.getHome(userId, location, PageRequest.of(page, size)));
     }
 
     // 회원가입
