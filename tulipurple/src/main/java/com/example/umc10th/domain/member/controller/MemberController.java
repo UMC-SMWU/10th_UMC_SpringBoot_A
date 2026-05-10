@@ -21,12 +21,12 @@ public class MemberController {
     private final MemberService memberService;
 
     // 마이페이지
-    @PostMapping("/users/me")
+    @GetMapping("/users/{userId}/me")
     public ApiResponse<MemberResDTO.GetInfo> getInfo(
-            @RequestBody MemberReqDTO.GetInfo dto
+            @PathVariable Long userId
     ) {
         BaseSuccessCode code = MemberSuccessCode.OK;
-        return ApiResponse.onSuccess(code, memberService.getInfo(dto));
+        return ApiResponse.onSuccess(code, memberService.getInfo(userId));
     }
 
     // 홈화면 조회

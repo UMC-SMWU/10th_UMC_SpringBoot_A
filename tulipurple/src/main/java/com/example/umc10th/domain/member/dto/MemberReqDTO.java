@@ -8,11 +8,6 @@ import java.util.List;
 
 public class MemberReqDTO {
 
-    // 마이페이지
-    public record GetInfo(
-            Long id
-    ){}
-
     // 회원가입
     public record SignUp(
             String email,
