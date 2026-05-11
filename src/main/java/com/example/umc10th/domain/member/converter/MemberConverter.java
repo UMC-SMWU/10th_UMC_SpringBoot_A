@@ -75,7 +75,11 @@ public class MemberConverter {
 
         List<MemberResDTO.ReviewInfo> reviewInfoList = pageContent.stream()
                 .map(r -> MemberResDTO.ReviewInfo.builder()
-                        // Review 엔티티 필드에 맞게 작성
+                        .reviewId(r.getId())
+                        .storeName(r.getStore().getName())
+                        .star((float) r.getScore())
+                        .body(r.getBody())
+                        .createdAt(r.getCreatedAt().toLocalDate())
                         .build())
                 .toList();
 

@@ -54,7 +54,7 @@ public class MemberService {
         return MemberConverter.toMyPageDTO(member);
     }
 
-    // 미션1: 진행중인 미션 조회 (오프셋 페이지네이션)
+    // 미션1: 진행중인 미션 조회
     public MemberResDTO.MissionPageResponse getChallengingMissions(
             MemberReqDTO.MissionPageRequest request, Integer page) {
 
@@ -63,20 +63,24 @@ public class MemberService {
                 .findByMemberIdAndStatus(request.memberId(), MissionStatus.CHALLENGING, pageRequest);
         return MemberConverter.toMissionPageResponse(result);
     }
-    // 미션2: 내가 작성한 리뷰 목록 (커서 페이지네이션)
-    public MemberResDTO.ReviewPageResponse getMyReviews(
-            Long memberId, String cursor, Integer pageSize) {
 
-        // cursor가 없으면 처음부터, 있으면 해당 id 이후부터 조회
+    public MemberResDTO.ReviewPageResponse getMyReviews(
+            Long memberId, String cursor, Integer pageSize, String sortBy) {
+
         List<Review> reviews;
+        boolean isSortByScore = "star".equals(sortBy);
+
         if (cursor == null || cursor.equals("-1")) {
-            reviews = reviewRepository.findByMemberIdOrderByIdDesc(
-                    memberId, PageRequest.of(0, pageSize));
+            reviews = isSortByScore
+                    ? reviewRepository.findByMemberIdOrderByScoreDesc(memberId, PageRequest.of(0, pageSize + 1))
+                    : reviewRepository.findByMemberIdOrderByIdDesc(memberId, PageRequest.of(0, pageSize + 1));
         } else {
-            reviews = reviewRepository.findByMemberIdAndIdLessThanOrderByIdDesc(
-                    memberId, Long.parseLong(cursor), PageRequest.of(0, pageSize));
+            reviews = isSortByScore
+                    ? reviewRepository.findByMemberIdAndScoreLessThanOrderByScoreDesc(memberId, Integer.parseInt(cursor), PageRequest.of(0, pageSize + 1))
+                    : reviewRepository.findByMemberIdAndIdLessThanOrderByIdDesc(memberId, Long.parseLong(cursor), PageRequest.of(0, pageSize + 1));
         }
 
         return MemberConverter.toReviewPageResponse(reviews, pageSize);
     }
+
 }

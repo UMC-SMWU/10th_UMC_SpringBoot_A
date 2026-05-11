@@ -62,14 +62,14 @@ public class MemberController {
         return ApiResponse.onSuccess(memberService.getChallengingMissions(request, page));
     }
 
-    // 미션2: 내가 작성한 리뷰 조회 (커서 페이지네이션, 사진 제외)
     @GetMapping("/api/members/{memberId}/reviews")
     public ApiResponse<MemberResDTO.ReviewPageResponse> getMyReviews(
             @PathVariable Long memberId,
             @RequestParam(required = false, defaultValue = "-1") String cursor,
-            @RequestParam(defaultValue = "10") Integer pageSize
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue = "id") String sortBy  // 추가!
     ) {
-        return ApiResponse.onSuccess(memberService.getMyReviews(memberId, cursor, pageSize));
+        return ApiResponse.onSuccess(memberService.getMyReviews(memberId, cursor, pageSize, sortBy));
     }
 
 }
