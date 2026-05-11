@@ -4,6 +4,7 @@ import com.example.umc10th.domain.member.dto.MemberReqDTO;
 import com.example.umc10th.domain.member.dto.MemberResDTO;
 import com.example.umc10th.domain.member.service.MemberService;
 import com.example.umc10th.global.apiPayload.BaseSuccessCode;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import com.example.umc10th.global.apiPayload.ApiResponse;
@@ -28,7 +29,7 @@ public class MemberController {
     // 회원가입
     @PostMapping("/api/signup")
     public ApiResponse<MemberResDTO.SignUp> signUp(
-            @RequestBody MemberReqDTO.SignUp dto)
+            @RequestBody @Valid MemberReqDTO.SignUp dto)
     {
         BaseSuccessCode code = MemberSuccessCode.SIGN_UP_SUCCESS;
         MemberResDTO.SignUp result = memberService.signUp(dto);
@@ -51,5 +52,24 @@ public class MemberController {
         return ApiResponse.onSuccess(memberService.getMyPage(memberId));
     }
 
+    // 미션1: 진행중인 미션 조회 (오프셋 페이지네이션)
+// userId는 RequestBody에서 받기
+    @PostMapping("/api/members/missions/challenging")
+    public ApiResponse<MemberResDTO.MissionPageResponse> getChallengingMissions(
+            @RequestBody @Valid MemberReqDTO.MissionPageRequest request,
+            @RequestParam(defaultValue = "0") Integer page
+    ) {
+        return ApiResponse.onSuccess(memberService.getChallengingMissions(request, page));
+    }
+
+    // 미션2: 내가 작성한 리뷰 조회 (커서 페이지네이션, 사진 제외)
+    @GetMapping("/api/members/{memberId}/reviews")
+    public ApiResponse<MemberResDTO.ReviewPageResponse> getMyReviews(
+            @PathVariable Long memberId,
+            @RequestParam(required = false, defaultValue = "-1") String cursor,
+            @RequestParam(defaultValue = "10") Integer pageSize
+    ) {
+        return ApiResponse.onSuccess(memberService.getMyReviews(memberId, cursor, pageSize));
+    }
 
 }
