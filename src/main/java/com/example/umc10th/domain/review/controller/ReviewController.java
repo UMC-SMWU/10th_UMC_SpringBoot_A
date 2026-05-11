@@ -5,6 +5,7 @@ import com.example.umc10th.domain.review.dto.ReviewResDTO;
 import com.example.umc10th.domain.review.exception.code.ReviewSuccessCode;
 import com.example.umc10th.domain.review.service.ReviewService;
 import com.example.umc10th.global.apiPayload.ApiResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class ReviewController {
 
     @PostMapping
     public ApiResponse<ReviewResDTO.CreateReview> createReview(
-            @RequestBody ReviewReqDTO.CreateReview request
+            @Valid @RequestBody ReviewReqDTO.CreateReview request
     ) {
         ReviewResDTO.CreateReview response =
                 ReviewResDTO.CreateReview.builder()
