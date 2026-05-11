@@ -1,6 +1,8 @@
 package com.example.umc10th.domain.member.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Builder;
 
 import java.time.LocalDate;
@@ -21,9 +23,15 @@ public class MemberReqDTO {
             String gender,
             @NotNull(message = "이메일은 필수입니다.")
             String email,
-            @NotNull(message = "전화번호는 필수입니다.")
+
+
+            @NotBlank(message = "전화번호는 필수입니다.")
             String phoneNumber,
+
+            @NotBlank(message = "생일은 필수입니다.")
+            @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "생일 형식이 올바르지 않습니다. (YYYY-MM-DD)")
             String birthday_Date,
+
             String address) {}
 
     public record Login(String email, String password) {
