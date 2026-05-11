@@ -34,11 +34,11 @@ public class MemberController {
     public ApiResponse<MemberResDTO.HomeInfo> getHome(
             @PathVariable Long userId,
             @RequestParam(required = false) Address location,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "0") int pageNumber,
+            @RequestParam(defaultValue = "10") int pageSize
     ) {
         BaseSuccessCode code = MemberSuccessCode.HOME_OK;
-        return ApiResponse.onSuccess(code, memberService.getHome(userId, location, PageRequest.of(page, size)));
+        return ApiResponse.onSuccess(code, memberService.getHome(userId, location, PageRequest.of(pageNumber, pageSize)));
     }
 
     // 회원가입
