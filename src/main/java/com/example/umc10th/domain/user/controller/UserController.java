@@ -3,31 +3,29 @@ package com.example.umc10th.domain.user.controller;
 import com.example.umc10th.domain.user.dto.UserReqDTO;
 import com.example.umc10th.domain.user.dto.UserResDTO;
 import com.example.umc10th.domain.user.exception.code.UserSuccessCode;
+import com.example.umc10th.domain.user.service.UserService;
 import com.example.umc10th.global.apiPayload.ApiResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/mypage")
 public class UserController {
+
+    private final UserService userService;
 
     // 내 정보 조회
     @GetMapping("/me")
     public ApiResponse<UserResDTO.GetInfo> getMyPage() {
 
-        UserResDTO.GetInfo response =
-                UserResDTO.GetInfo.builder()
-                        .name("김다은")
-                        .nickname("daeun")
-                        .profileUrl("https://example.com/profile.jpg")
-                        .email("daeun@example.com")
-                        .phoneNumber("010-1234-5678")
-                        .point(1500)
-                        .build();
+        Long userId = 1L;
 
         return ApiResponse.onSuccess(
                 UserSuccessCode.USER_INFO_SUCCESS,
-                response
+                userService.getMyPage(userId)
         );
+
     }
 
     // 내 정보 수정
@@ -36,16 +34,10 @@ public class UserController {
             @RequestBody UserReqDTO.UpdateInfo request
     ) {
 
-        // 일단 가짜 데이터 넣기
+        Long userId = 1L;
+
         UserResDTO.GetInfo response =
-                UserResDTO.GetInfo.builder()
-                        .name(request.name())
-                        .nickname(request.nickname())
-                        .profileUrl("https://example.com/profile.jpg")
-                        .email(request.email())
-                        .phoneNumber(request.phoneNumber())
-                        .point(1500)
-                        .build();
+                userService.updateMyPage(userId, request);
 
         return ApiResponse.onSuccess(
                 UserSuccessCode.USER_UPDATE_SUCCESS,

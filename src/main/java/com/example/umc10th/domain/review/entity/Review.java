@@ -1,8 +1,9 @@
-package com.example.umc10th.domain.mission.entity;
+package com.example.umc10th.domain.review.entity;
 
+import com.example.umc10th.domain.mission.entity.Restaurant;
+import com.example.umc10th.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -10,26 +11,31 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "mission")
-public class Mission {
+@Table(name = "review")
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mission_id")
+    @Column(name = "review_id")
     private Long id;
+
+    // User와 N:1 관계
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
-    @Column(name = "left_date", nullable = false)
-    private Integer leftDate;
-
-    @Column(name = "mission_content", nullable = false, length = 100)
+    @Column(name = "review_content", nullable = false)
     private String content;
 
-    @Column(name = "point", nullable = false)
-    private Integer point;
+    @Column(name = "star_rating", nullable = false)
+    private Float starRating;
+
+    @Column(name = "picture_url")
+    private String pictureUrl;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
