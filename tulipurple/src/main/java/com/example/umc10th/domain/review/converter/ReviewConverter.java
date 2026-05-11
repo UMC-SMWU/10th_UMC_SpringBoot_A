@@ -24,4 +24,14 @@ public class ReviewConverter {
                 .reviewId(review.getId())
                 .build();
     }
+
+    // 엔티티 -> 조회 응답
+    public static ReviewResDTO.GetReview toGetReview(Review review) {
+        return ReviewResDTO.GetReview.builder()
+                .reviewId(review.getId())
+                .storeName(review.getStore().getName())
+                .content(review.getContent())
+                .star(review.getStar())
+                .build();
+    }
 }
