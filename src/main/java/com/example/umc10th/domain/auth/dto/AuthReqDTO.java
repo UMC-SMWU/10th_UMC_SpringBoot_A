@@ -8,9 +8,14 @@ public class AuthReqDTO {
 
     public record SignUp (
             String email,
-            String password,
+            String password
+    ){}
+
+    public record Onboarding (
             String name,
             Gender gender,
+            LocalDate birth,
+            String password,
             LocalDate birthDate,
             String address,
             List<Long> preferredFoodCategoryIds,

@@ -6,14 +6,6 @@ import lombok.Builder;
 public class MemberResDTO {
 
     @Builder
-    public record GetInfo(
-            String name,
-            String profileUrl,
-            String email,
-            String phoneNumber,
-            Integer point
-    ){}
-
     public record HomeInfo(
             String location,
             Integer completedMissionCount,

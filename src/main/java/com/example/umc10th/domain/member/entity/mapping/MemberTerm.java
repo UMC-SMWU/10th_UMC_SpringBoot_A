@@ -36,4 +36,5 @@ public class MemberTerm {
     @JoinColumn(name = "termId")
     @ManyToOne(fetch = FetchType.LAZY)
     private Food term;
+
 }

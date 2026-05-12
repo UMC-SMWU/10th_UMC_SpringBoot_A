@@ -1,11 +1,15 @@
 package com.example.umc10th.domain.member.entity;
 
+import com.example.umc10th.domain.member.entity.mapping.MemberFood;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,4 +30,8 @@ public class Food {
 
     @Column(name = "foodName")
     private String foodName;
+
+    @OneToMany(mappedBy = "food")
+    private List<MemberFood> memberFoodList = new ArrayList<>();
+
 }
