@@ -9,8 +9,9 @@ import com.example.umc10th.global.apiPayload.code.BaseSuccessCode;
 
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.data.domain.PageRequest;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -21,23 +22,46 @@ public class MissionController {
 
     // 미션 목록 조회
     @GetMapping("/users/{userId}/missions")
-    public ApiResponse<MissionResDTO.MissionListInfo> getMissionList(
+    public ApiResponse<MissionResDTO.OffsetPagination<MissionResDTO.MissionInfo>> getMissionList(
             @PathVariable Long userId,
             @RequestParam(required = false) String status,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam Integer pageSize,
+            @RequestParam Integer pageNumber,
+            @RequestParam(required = false) String sort
     ) {
         BaseSuccessCode code = MissionSuccessCode.MISSION_LIST_OK;
-        return ApiResponse.onSuccess(code, missionService.getMissionList(userId, status, PageRequest.of(page, size)));
+        return ApiResponse.onSuccess(code, missionService.getMissionList(userId, status, pageSize, pageNumber, sort));
     }
 
     // 미션 성공 누르기
     @PatchMapping("/missions/{memberMissionId}")
     public ApiResponse<MissionResDTO.MissionSuccessInfo> completeMission(
             @PathVariable Long memberMissionId,
-            @RequestBody MissionReqDTO.CompleteStatus dto
+            @RequestBody @Valid MissionReqDTO.CompleteStatus dto
     ) {
         BaseSuccessCode code = MissionSuccessCode.MISSION_SUCCESS_OK;
         return ApiResponse.onSuccess(code, missionService.completeMission(memberMissionId, dto));
+    }
+
+    // 가게 미션 목록 조회
+    @GetMapping("/stores/{storeId}/missions")
+    public ApiResponse<MissionResDTO.Pagination<MissionResDTO.GetMission>> getMissions(
+            @PathVariable Long storeId,
+            @RequestParam Integer pageSize,
+            @RequestParam String cursor,
+            @RequestParam String query
+    ) {
+        BaseSuccessCode code = MissionSuccessCode.MISSION_GET_OK;
+        return ApiResponse.onSuccess(code, missionService.getMissions(storeId, pageSize, cursor, query));
+    }
+
+    // 가게 미션 생성
+    @PostMapping("/stores/{storeId}/missions")
+    public ApiResponse<Void> createMission(
+            @PathVariable Long storeId,
+            @RequestBody @Valid MissionReqDTO.CreateMission dto
+    ){
+        BaseSuccessCode code = MissionSuccessCode.MISSION_CREATE_OK;
+        return ApiResponse.onSuccess(code, missionService.createMission(storeId, dto));
     }
 }
