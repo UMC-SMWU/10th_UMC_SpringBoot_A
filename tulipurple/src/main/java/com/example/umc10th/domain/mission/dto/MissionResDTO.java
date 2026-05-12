@@ -19,7 +19,8 @@ public class MissionResDTO {
 
     @Builder
     public record MissionListInfo(
-            List<MissionInfo> missionList
+            List<MissionInfo> missionList,
+            int totalPage
     ){}
 
     // 미션 성공 누르기

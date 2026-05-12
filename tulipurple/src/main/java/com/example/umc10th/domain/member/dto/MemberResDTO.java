@@ -3,8 +3,6 @@ package com.example.umc10th.domain.member.dto;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.example.umc10th.domain.member.enums.Gender;
-
 import lombok.Builder;
 
 public class MemberResDTO {
@@ -15,8 +13,6 @@ public class MemberResDTO {
             String name,
             String profileUrl,
             String email,
-            Gender gender,
-            LocalDate birth,
             String phoneNumber,
             Integer point
     ){}
@@ -24,8 +20,7 @@ public class MemberResDTO {
     // 홈화면
     @Builder
     public record HomeInfo(
-            String name,
-            String address,
+            String location,
             Integer point,
             Integer missionSuccessCount,
             Integer missionTotalCount,
@@ -39,7 +34,8 @@ public class MemberResDTO {
             String storeName,
             String conditional,
             Integer point,
-            LocalDate deadline
+            LocalDate deadline,
+            Long dDay
     ){}
 
     // 회원가입
