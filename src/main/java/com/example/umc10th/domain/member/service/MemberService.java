@@ -1,7 +1,5 @@
 package com.example.umc10th.domain.member.service;
 
-import com.example.umc10th.domain.member.converter.MemberConverter;
-import com.example.umc10th.domain.member.dto.MemberReqDTO;
 import com.example.umc10th.domain.member.dto.MemberResDTO;
 import com.example.umc10th.domain.member.entity.Member;
 import com.example.umc10th.domain.member.exception.MemberException;
@@ -32,7 +30,7 @@ public class MemberService {
                 .orElseThrow(() -> new MemberException(MemberErrorCode.MEMBER_NOT_FOUND));
 
         Integer completedMissionCount =
-                memberMissionRepository.countByMemberAndIsCompleted(
+                memberMissionRepository.countByMember_IdAndIsCompleted(
                         member,
                         MissionCompleteStatus.COMPLETED
                 );
