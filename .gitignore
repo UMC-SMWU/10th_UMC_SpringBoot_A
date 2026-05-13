@@ -23,14 +23,7 @@
 hs_err_pid*
 replay_pid*
 
-### IDE ###
-.idea/
-*.iml
-
-### Gradle ###
-.gradle/
+.gradle
 build/
-
-### OS ###
-.DS_Store
-Thumbs.db
+.idea/
+--continue
