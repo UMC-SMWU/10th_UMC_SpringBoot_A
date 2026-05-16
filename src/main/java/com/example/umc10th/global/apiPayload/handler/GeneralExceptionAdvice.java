@@ -7,6 +7,7 @@ import com.example.umc10th.global.apiPayload.exception.ProjectException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 @RestControllerAdvice
 public class GeneralExceptionAdvice {
@@ -19,6 +20,26 @@ public class GeneralExceptionAdvice {
         BaseErrorCode errorCode = e.getErrorCode();
         return ResponseEntity.status(errorCode.getStatus())
                 .body(ApiResponse.onFailure(errorCode, null));
+    }
+
+    // Validation 처리
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiResponse<String>> handleValidationException(
+            MethodArgumentNotValidException e
+    ) {
+
+        String message = e.getBindingResult()
+                .getFieldErrors()
+                .get(0)
+                .getDefaultMessage();
+
+        BaseErrorCode code = GeneralErrorCode.BAD_REQUEST;
+
+        return ResponseEntity.status(code.getStatus())
+                .body(ApiResponse.onFailure(
+                        code,
+                        message
+                ));
     }
 
     // 그 외의 정의되지 않은 모든 예외 처리

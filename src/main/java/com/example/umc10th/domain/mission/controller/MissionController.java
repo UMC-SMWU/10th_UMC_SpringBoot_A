@@ -1,5 +1,6 @@
 package com.example.umc10th.domain.mission.controller;
 
+import com.example.umc10th.domain.mission.dto.MissionReqDTO;
 import com.example.umc10th.domain.mission.dto.MissionResDTO;
 import com.example.umc10th.domain.mission.exception.code.MissionSuccessCode;
 import com.example.umc10th.domain.mission.service.MissionService;
@@ -15,27 +16,26 @@ public class MissionController {
 
     private final MissionService missionService;
 
-    @GetMapping("/me")
+    @PostMapping("/me")
     public ApiResponse<MissionResDTO.MissionList> getMyMissions(
-            @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "10") int size,
-            @RequestParam(required = false) String status
+            @RequestBody MissionReqDTO.GetMyMissions request
     ) {
-
-        Long userId = 1L; // 임시
-
         return ApiResponse.onSuccess(
                 MissionSuccessCode.MISSION_LIST_SUCCESS,
-                missionService.getMyMissions(userId, page, size, status)
+                missionService.getMyMissions(
+                        request.userId(),
+                        request.page(),
+                        request.size(),
+                        request.status()
+                )
         );
     }
 
     @GetMapping("/me/{missionId}")
     public ApiResponse<MissionResDTO.MissionItem> getMissionDetail(
+            @RequestParam Long userId,
             @PathVariable Long missionId
     ) {
-
-        Long userId = 1L;
 
         return ApiResponse.onSuccess(
                 MissionSuccessCode.MISSION_LIST_SUCCESS,
