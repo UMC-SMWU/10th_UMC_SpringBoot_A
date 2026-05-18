@@ -24,6 +24,8 @@ public class MemberReqDTO {
             @NotNull(message = "이메일은 필수입니다.")
             String email,
 
+            @NotBlank(message = "비밀번호는 필수입니다.")
+            String password,
 
             @NotBlank(message = "전화번호는 필수입니다.")
             String phoneNumber,
@@ -32,7 +34,8 @@ public class MemberReqDTO {
             @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "생일 형식이 올바르지 않습니다. (YYYY-MM-DD)")
             String birthday_Date,
 
-            String address) {}
+            String address
+    ) {}
 
     public record Login(String email, String password) {
     }
