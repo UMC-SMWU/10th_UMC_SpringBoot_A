@@ -1,4 +1,4 @@
-package com.example.umc10th.domain.auth.dto.request;
+package com.example.umc10th.domain.auth.dto;
 
 import lombok.Getter;
 
