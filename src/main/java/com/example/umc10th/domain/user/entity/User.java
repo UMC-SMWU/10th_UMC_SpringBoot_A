@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Builder
@@ -40,17 +42,20 @@ public class User {
     @Column(length = 50)
     private String email;
 
+    @Column(length = 100)
+    private String password;
+
     @Column(name = "phone_number", length = 13)
     private String phoneNumber;
 
     @Column(name = "created_at", nullable = false)
-    private String createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "updated_at", nullable = false)
-    private String updatedAt;
+    private LocalDateTime updatedAt;
 
     @Column(name = "deleted_at")
-    private String deletedAt;
+    private LocalDateTime deletedAt;
 
     @Column(name = "phone_verified", nullable = false)
     private Boolean phoneVerified;
