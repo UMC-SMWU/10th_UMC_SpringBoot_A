@@ -42,7 +42,7 @@ public class User {
     @Column(length = 50)
     private String email;
 
-    @Column(length = 50)
+    @Column(length = 100)
     private String password;
 
     @Column(name = "phone_number", length = 13)
