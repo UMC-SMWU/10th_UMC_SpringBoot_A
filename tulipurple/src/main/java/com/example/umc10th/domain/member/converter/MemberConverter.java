@@ -58,11 +58,11 @@ public class MemberConverter {
     }
 
     // 회원가입
-    public static Member toEntity(MemberReqDTO.SignUp dto) {
+    public static Member toEntity(MemberReqDTO.SignUp dto, String encodedPassword) {
         return Member.builder()
                 .name(dto.name())
                 .email(dto.email())
-                .password(dto.password())
+                .password(encodedPassword)
                 .gender(dto.gender())
                 .birth(dto.birth())
                 .address(dto.address())
