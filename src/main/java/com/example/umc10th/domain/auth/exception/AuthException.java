@@ -1,11 +1,11 @@
-package com.example.umc10th.domain.mission.exception;
+package com.example.umc10th.domain.auth.exception;
 
-import com.example.umc10th.global.apiPayload.exception.ProjectException;
 import com.example.umc10th.global.apiPayload.code.BaseErrorCode;
+import com.example.umc10th.global.apiPayload.exception.ProjectException;
 
-public class MissionException extends ProjectException {
+public class AuthException extends ProjectException {
 
-    public MissionException(BaseErrorCode errorCode) {
+    public AuthException(BaseErrorCode errorCode) {
         super(errorCode);
     }
 }

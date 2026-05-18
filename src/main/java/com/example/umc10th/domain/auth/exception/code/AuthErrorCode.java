@@ -1,4 +1,4 @@
-package com.example.umc10th.domain.mission.exception.code;
+package com.example.umc10th.domain.auth.exception.code;
 
 import com.example.umc10th.global.apiPayload.code.BaseErrorCode;
 import lombok.Getter;
@@ -7,14 +7,19 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @RequiredArgsConstructor
-public enum MissionErrorCode implements BaseErrorCode {
+public enum AuthErrorCode implements BaseErrorCode {
 
-    MISSION_ALREADY_IN_PROGRESS(HttpStatus.BAD_REQUEST, "MISSION400_1", "이미 진행 중인 미션입니다."),
-    MISSION_ALREADY_COMPLETED(HttpStatus.BAD_REQUEST, "MISSION400_2", "이미 완료된 미션입니다."),
+    EMAIL_ALREADY_EXISTS(
+            HttpStatus.BAD_REQUEST,
+            "AUTH4001",
+            "이미 존재하는 이메일입니다."
+    ),
 
-    MISSION_PAGE_OUT_OF_RANGE(HttpStatus.BAD_REQUEST, "MISSION400_3", "요청한 페이지가 존재하지 않습니다."),
-    MISSION_FORBIDDEN(HttpStatus.FORBIDDEN, "MISSION403_1", "해당 미션에 접근할 권한이 없습니다."),
-    MISSION_NOT_FOUND(HttpStatus.NOT_FOUND, "MISSION404_1", "해당 미션을 찾을 수 없습니다.");
+    LOGIN_FAILED(
+            HttpStatus.UNAUTHORIZED,
+            "AUTH4002",
+            "이메일 또는 비밀번호가 올바르지 않습니다."
+    );
 
     private final HttpStatus status;
     private final String code;

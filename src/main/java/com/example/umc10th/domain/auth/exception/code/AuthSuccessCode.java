@@ -1,4 +1,4 @@
-package com.example.umc10th.domain.mission.exception.code;
+package com.example.umc10th.domain.auth.exception.code;
 
 import com.example.umc10th.global.apiPayload.code.BaseSuccessCode;
 import lombok.Getter;
@@ -7,9 +7,11 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @RequiredArgsConstructor
-public enum MissionSuccessCode implements BaseSuccessCode {
+public enum AuthSuccessCode implements BaseSuccessCode {
 
-    MISSION_LIST_SUCCESS(HttpStatus.OK, "MISSION200_1", "내 미션 조회 성공");
+    SIGNUP_SUCCESS(HttpStatus.OK, "AUTH2001", "회원가입 성공"),
+    LOGIN_SUCCESS(HttpStatus.OK, "AUTH2002", "로그인 성공");
+
 
     private final HttpStatus status;
     private final String code;
