@@ -1,6 +1,6 @@
 package com.example.umc10th.domain.auth.service;
 
-import com.example.umc10th.domain.auth.dto.request.SignupReqDTO;
+import com.example.umc10th.domain.auth.dto.SignupReqDTO;
 import com.example.umc10th.domain.user.entity.User;
 import com.example.umc10th.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
