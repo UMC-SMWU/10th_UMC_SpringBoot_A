@@ -13,6 +13,7 @@ import com.example.umc10th.domain.mission.repository.MemberMissionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,6 +22,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
     private final MemberMissionRepository memberMissionRepository;
+    private final PasswordEncoder passwordEncoder;
 
     // 마이페이지
     public MemberResDTO.GetInfo getInfo(Long userId) {
@@ -51,7 +53,11 @@ public class MemberService {
 
     // 회원가입
     public MemberResDTO.SignUpInfo signUp(MemberReqDTO.SignUp dto) {
-        Member member = MemberConverter.toEntity(dto);
+        if (memberRepository.findByEmail(dto.email()).isPresent()) {
+            throw new MemberException(MemberErrorCode.MEMBER_EMAIL_ALREADY_EXISTS);
+        }
+        String encodedPassword = passwordEncoder.encode(dto.password());
+        Member member = MemberConverter.toEntity(dto, encodedPassword);
         Member savedMember = memberRepository.save(member);
         return MemberConverter.toSignUpInfo(savedMember);
     }
