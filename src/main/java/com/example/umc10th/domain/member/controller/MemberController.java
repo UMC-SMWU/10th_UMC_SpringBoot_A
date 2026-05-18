@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import com.example.umc10th.global.apiPayload.ApiResponse;
 import com.example.umc10th.domain.member.exception.code.MemberSuccessCode;
 
-@RestController //JSON형식의 응답을 내보내기 위한 컨트롤러 (@Controller + @ResponseBody 합친 어노테이션)
+@RestController
+@RequestMapping("/api")
 @RequiredArgsConstructor //생성자 주입을 위한 어노테이션
 public class MemberController {
     private final MemberService memberService;
 
     //request body
     // 홈화면
-    @GetMapping("/api/users/home")
+    @GetMapping("/users/home")
     public ApiResponse<MemberResDTO.HomeInfo> getInfo(
             @RequestParam Long memberId)
     {
@@ -27,7 +28,7 @@ public class MemberController {
 
 
     // 회원가입
-    @PostMapping("/api/signup")
+    @PostMapping("/users/signup")
     public ApiResponse<MemberResDTO.SignUp> signUp(
             @RequestBody @Valid MemberReqDTO.SignUp dto)
     {
@@ -37,7 +38,7 @@ public class MemberController {
     }
 
     // 로그인
-    @PostMapping("/api/auth/login")
+    @PostMapping("/auth/login")
     public ApiResponse<MemberResDTO.Login> login(
             @RequestBody MemberReqDTO.Login dto)
     {
@@ -46,7 +47,7 @@ public class MemberController {
         return ApiResponse.onSuccess(code, result);
     }
 
-    @GetMapping("/api/users/{memberId}/my")
+    @GetMapping("/users/{memberId}/my")
     public ApiResponse<MemberResDTO.MyPageDTO> getMyPage(
             @PathVariable Long memberId) {
         return ApiResponse.onSuccess(memberService.getMyPage(memberId));
@@ -54,7 +55,7 @@ public class MemberController {
 
     // 미션1: 진행중인 미션 조회 (오프셋 페이지네이션)
 // userId는 RequestBody에서 받기
-    @PostMapping("/api/members/missions/challenging")
+    @PostMapping("/members/missions/challenging")
     public ApiResponse<MemberResDTO.MissionPageResponse> getChallengingMissions(
             @RequestBody @Valid MemberReqDTO.MissionPageRequest request,
             @RequestParam(defaultValue = "0") Integer page
@@ -62,7 +63,7 @@ public class MemberController {
         return ApiResponse.onSuccess(memberService.getChallengingMissions(request, page));
     }
 
-    @GetMapping("/api/members/{memberId}/reviews")
+    @GetMapping("/members/{memberId}/reviews")
     public ApiResponse<MemberResDTO.ReviewPageResponse> getMyReviews(
             @PathVariable Long memberId,
             @RequestParam(required = false, defaultValue = "-1") String cursor,
